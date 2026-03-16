@@ -1,65 +1,137 @@
-Yoga Pose Detection using MediaPipe and Machine Learning
+# Yoga Pose Detection using MediaPipe and Machine Learning
 
-This project implements a Yoga Pose Detection system using MediaPipe for keypoint extraction and machine learning models for pose classification. It allows automatic recognition of yoga poses from images, which can be used for fitness apps, personal training, or posture correction systems.
+## Project Overview
+This project implements a **Yoga Pose Detection System** using **MediaPipe for keypoint extraction** and **Machine Learning models for pose classification**.
 
-Key Features:
+The system automatically recognizes yoga poses from images, which can be used for **fitness applications, posture correction systems, and personal training platforms**.
 
-Pose Keypoint Extraction:
+---
 
-Uses MediaPipe Pose to detect 33 body landmarks (keypoints) from images.
+## Key Features
 
-Each landmark includes x, y, z coordinates and visibility.
+### Pose Keypoint Extraction
+- Uses **MediaPipe Pose** to detect **33 body landmarks (keypoints)** from images.
+- Each landmark includes:
+  - x coordinate
+  - y coordinate
+  - z coordinate
+  - visibility score
+- Missing keypoints are **padded with zeros** to maintain a consistent input shape.
 
-Missing keypoints are padded with zeros to maintain a consistent input shape (132 features per image).
+Total features per image:
 
-Dataset Handling:
+132 features
 
-Supports combining old training data (previously saved features and labels) with new images for incremental training.
+---
 
-Automatically handles mismatches between feature and label counts.
+### Dataset Handling
+- Supports **combining previously saved training data with new images**.
+- Enables **incremental training**.
+- Automatically handles mismatches between:
+  - feature counts
+  - label counts
 
-Machine Learning Models:
+---
 
-RandomForestClassifier (scikit-learn) for fast and robust pose classification.
+### Machine Learning Models
 
-Optionally, can use TensorFlow/Keras neural networks for advanced training and export to TFLite for mobile deployment.
+#### Random Forest Classifier
+- Implemented using **scikit-learn**
+- Fast training and reliable classification
+- Works well for structured keypoint data
 
-Label Encoding:
+#### Neural Network Model (Optional)
+- Implemented using **TensorFlow / Keras**
+- Suitable for advanced training
+- Can be exported to **TensorFlow Lite (TFLite)** for mobile deployment
 
-Converts pose names into numeric labels using LabelEncoder.
+---
 
-Model Saving:
+### Label Encoding
+Pose names are converted into **numeric labels** using **LabelEncoder**.
 
-RandomForest models are saved using pickle or joblib.
+Example:
 
-Neural network models can be saved as .h5 (Keras) and converted to .tflite for lightweight deployment.
+Tree Pose → 0  
+Warrior Pose → 1  
+Downward Dog → 2
 
-Extensible & Flexible:
+---
 
-Easy to add new yoga poses by adding images to the dataset folder.
+### Model Saving
 
-Automatically extracts keypoints, encodes labels, and retrains the model.
+#### Random Forest Model
+Saved using:
+- pickle
+- joblib
 
-Technology Stack / Libraries Used:
+#### Neural Network Model
+Saved as:
+- .h5 (Keras model)
+- .tflite (TensorFlow Lite model)
 
-Python 3.x
+---
 
-MediaPipe – for pose landmark detection
+### Extensible and Flexible System
+New yoga poses can be added easily.
 
-OpenCV – for image reading and preprocessing
+Steps:
+1. Add images of the new pose into the dataset folder
+2. Run the training script
+3. The system will automatically:
+   - extract keypoints
+   - encode labels
+   - retrain the model
 
-NumPy – for numerical operations
+---
 
-scikit-learn – for RandomForestClassifier and label encoding
+## Technology Stack
 
-pickle / joblib – for saving and loading trained models
+| Technology | Purpose |
+|-----------|--------|
+| Python 3.x | Core programming language |
+| MediaPipe | Pose landmark detection |
+| OpenCV | Image processing |
+| NumPy | Numerical operations |
+| scikit-learn | Machine learning models |
+| pickle / joblib | Model saving |
+| TensorFlow / Keras | Neural network training |
+| TensorFlow Lite | Mobile deployment |
 
-TensorFlow/Keras (optional) – for neural network models and TFLite conversion
+---
 
-Use Case:
+## Use Cases
 
-Fitness apps for yoga training and pose correction
+### Fitness Applications
+Used in yoga training platforms to automatically recognize poses.
 
-Real-time posture monitoring using camera input
+### Real-Time Posture Monitoring
+Can be integrated with webcam input for posture analysis.
 
-Incremental learning with new poses for custom datasets
+### Incremental Learning Systems
+Allows continuous improvement by adding new poses to the dataset.
+
+### Mobile Fitness Applications
+Using TensorFlow Lite, the model can run on smartphones or embedded devices.
+
+---
+
+## Future Improvements
+- Real-time webcam-based pose detection
+- Pose accuracy scoring
+- Mobile application integration
+- Deep learning models for improved accuracy
+- Real-time posture correction feedback system
+
+---
+
+## Author
+
+Aditya Deshpande
+
+GitHub Profile  
+https://github.com/Aditya-Deshpande19
+
+Author
+
+Aditya Deshpande
